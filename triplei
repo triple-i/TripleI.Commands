@@ -1,0 +1,14 @@
+#! /usr/bin/env php
+<?php
+
+use Emerald\CLI;
+
+defined('ROOT') || define('ROOT', __DIR__);
+defined('LIB') || define('LIB', ROOT.'/library');
+defined('APP') || define('APP', 'TripleI');
+
+$loader = require_once(ROOT.'/vendor/autoload.php');
+$loader->set('TripleI', LIB);
+
+CLI::getInstance()->execute($argv);
+
