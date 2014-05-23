@@ -29,19 +29,6 @@ class S3
 
 
     /**
-     * コンストラクタ
-     *
-     * @return void
-     **/
-    public function __construct ()
-    {
-        $this->_ifExistsAwsIni();
-
-        
-    }
-
-
-    /**
      * @param  string $bucket
      * @return void
      **/
