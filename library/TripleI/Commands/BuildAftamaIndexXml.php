@@ -129,6 +129,6 @@ class BuildAftamaIndexXml extends AbstractCommand implements CommandInterface
      **/
     public static function help ()
     {
-        return '';
+        return '5型csvを引数に与えてAftama用目次XMLをデスクトップに生成する';
     }
 }
