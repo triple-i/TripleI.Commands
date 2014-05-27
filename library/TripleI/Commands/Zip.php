@@ -60,9 +60,10 @@ class Zip extends AbstractCommand implements CommandInterface
     private function _zip ()
     {
         $current_dir = $this->_formatDirectoryPath();
-        chdir($current_dir);
 
-        if ($dh = opendir('../'.$current_dir)) {
+        if ($dh = opendir($current_dir)) {
+            chdir($current_dir);
+
             while ($entry = readdir($dh)) {
                 if ($entry != '.' && $entry != '..' && is_dir($entry)) {
                     $command = 'zip -r '.$entry.'.zip '.$entry;
