@@ -93,8 +93,16 @@ class SumitomoIllustS3Upload extends AbstractCommand implements CommandInterface
      **/
     private function _initDirectory ()
     {
-        $this->upload_dir = $this->params[0].'/uploaded';
-        $this->failed_dir = $this->params[0].'/failed';
+        $dir = $this->params[0];
+        $dir = preg_replace('/\/$/', '', $dir);
+        $dir = preg_replace('/^\.\//', '', $dir);
+
+        $user = get_current_user();
+        $dir = preg_replace('/^~/', '/Users/'.$user, $dir);
+
+
+        $this->upload_dir = $dir.'/uploaded';
+        $this->failed_dir = $dir.'/failed';
 
         if (! is_dir($this->upload_dir)) {
             mkdir($this->upload_dir);
@@ -103,6 +111,8 @@ class SumitomoIllustS3Upload extends AbstractCommand implements CommandInterface
         if (! is_dir($this->failed_dir)) {
             mkdir($this->failed_dir);
         }
+
+        $this->params[0] = $dir;
     }
 
 
@@ -135,6 +145,11 @@ class SumitomoIllustS3Upload extends AbstractCommand implements CommandInterface
                     $illust_name = preg_replace('/\.(eps|EPS)/', '', $file);
                     $to_path = $parent_dir.'/'.$illust_name.'/'.$file;
                     $from_path = $this->params[0].'/'.$file;
+
+                    // 絶対パスでない場合は絶対パスに
+                    if (! preg_match('/^\//', $from_path)) {
+                        $from_path = getcwd().'/'.$from_path;
+                    }
 
                     try {
                         $this->S3->upload($from_path, $to_path);

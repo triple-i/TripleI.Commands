@@ -77,7 +77,7 @@ class S3
      **/
     private function _initS3Client ($force = false)
     {
-        if (! is_null($this->client) || $force === false) return;
+        if (! is_null($this->client)) return;
 
         // AWSクライアントの設定
         $ini = parse_ini_file(ROOT.'/'.$this->aws_ini_path);
@@ -146,7 +146,7 @@ class S3
             $this->_initS3Client();
 
             $this->client->putObject(array(
-                'SourceFile' => $$from_path,
+                'SourceFile' => $from_path,
                 'Key' => $to_path,
                 'Bucket' => $this->bucket
             ));
