@@ -101,6 +101,6 @@ class Unzip extends AbstractCommand implements CommandInterface
      **/
     public static function help ()
     {
-        return '';
+        return '指定ディレクトリ内にあるzipファイルを解凍する';
     }
 }
