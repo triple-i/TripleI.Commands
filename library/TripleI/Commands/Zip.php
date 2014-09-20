@@ -87,7 +87,7 @@ class Zip extends AbstractCommand implements CommandInterface
         $dir = preg_replace('/^\.\//', '', $dir);
 
         $user = get_current_user();
-        $dir = preg_replace('/^~/', '/Users/'.$user, $dir);
+        $dir  = preg_replace('/^~/', '/Users/'.$user, $dir);
 
         return $dir;
     }
