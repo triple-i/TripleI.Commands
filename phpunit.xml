@@ -22,7 +22,11 @@
 
     <filter>
         <whitelist addUncoveredFilesFromWhitelist="true">
-            <directory suffix="Test.php">src</directory>
+            <directory suffix=".php">src</directory>
+            <exclude>
+                <file>src/Bootstrap.php</file>
+                <file>src/TripleI/Console/TripleIApplication.php</file>
+            </exclude>
         </whitelist>
     </filter>
 </phpunit>

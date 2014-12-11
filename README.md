@@ -1,4 +1,4 @@
-TripleI.Commands
+TripleI.Commands [![Build Status](https://travis-ci.org/triple-i/TripleI.Commands.svg?branch=master)](https://travis-ci.org/triple-i/TripleI.Commands)
 ================
 
 ルーチンワークはコマンド作って時短する！！！！
