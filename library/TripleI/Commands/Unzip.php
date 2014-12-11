@@ -68,7 +68,8 @@ class Unzip extends AbstractCommand implements CommandInterface
             while ($entry = readdir($dh)) {
                 if ($entry != '.' && $entry != '..' && preg_match('/\.zip$/', $entry)) {
                     $command = 'unzip '.$entry;
-                    passthru($command);
+                    $this->log($command);
+                    exec($command);
                 }
             }
             closedir($dh);
