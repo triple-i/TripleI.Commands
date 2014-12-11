@@ -15,56 +15,35 @@ $ composer install
 
 
 ## Usage
-ルートに置いてある triplei が起動スクリプトだ。  
+bin ディレクトリに置いてある triplei が起動スクリプトだ。  
 これを動かせ。
 
 ```
-$ triplei
+$ bin/triplei
+Console Tool
 
--- EmeraldBeans CommandsList --
-  Generate:                      引数に指定した名前で新しいコマンドを生成します
-  GenerateModel:                 引数に指定した名前のモデルクラスを生成します
+Usage:
+ [options] command [arguments]....
 ```
 
-EmeraldBeans とかはコマンドライブラリのやつだから特に気にするな。  
-Generate コマンドで新しいコマンドを作る。
+generate コマンドで新しいコマンドを作ることが出来る。
 
 ```
-$ triplei Generate Rename
+$ triplei generate rename
 ```
 
-library/TripleI/Commands/Rename.php というコマンドファイルが生成される。  
-それを開いて execute メソッドに行いたい処理を書けばいい。
+src/TripleI/Command/Rename.php というコマンドファイルが生成される。  
+それを開いて実行したいコマンドの処理を記述すればいい。  
+
+詳しい記述方法は、Symfony2 の [Console](http://docs.symfony.gr.jp/symfony2/components/console/introduction.html) ページで確認するといい。  
+引数やオプションのやり方、テストの書き方も載っている。
 
 
-## How to use AWS
+## Author
 
-なんか処理したくて AWS (S3) 使いたいときもあるだろう。  
-まず設定ファイルを作る。
+[TripleI](https://github.com/triple-i)  
 
-```
-cp config/aws.ini.orig config/aws.ini
-```
 
-ファイルを開いて、認証キーを記述する。
+## LICENSE
 
-```
-key=xxxxxxxx
-secret=xxxxxxxxxxxxx
-```
-
-コマンドファイルでこのように使え。
-
-```
-<?php
-
-use TripleI\Aws\S3;
-use Aws\Common\Enum\Region;
-
-$S3 = new S3();
-$S3->setBucket('bucket_name');
-$S3->setRegion(Region::AP_NORTHEAST_1);
-$S3->upload($from_path, $to_path);
-```
-
-アップロード、ダウンロード、削除が容易に出来る。  
+[MIT](https://github.com/triple-i/TripleI.Commands/blob/master/LICENSE)
