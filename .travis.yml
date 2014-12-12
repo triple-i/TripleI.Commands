@@ -20,7 +20,7 @@ script:
 
 notifications:
     email:
-        - suguru@iii-planning.com
+        - info@gemini-project.net
     on_success: never
     on_failure: always
 
