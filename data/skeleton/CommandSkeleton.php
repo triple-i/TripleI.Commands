@@ -17,7 +17,7 @@ class ${name} extends Command
      **/
     protected function configure ()
     {
-        $this->setName('generate')
+        $this->setName('${c_name}')
             ->setDescription('コマンドの概要');
 
         /* 引数の記載

@@ -45,7 +45,14 @@ class GenerateTest extends PHPUnit_Framework_TestCase
      **/
     public function tearDown ()
     {
-        if (file_exists($this->c_path)) unlink($this->c_path);
+        if (file_exists($this->c_path)) {
+            unlink($this->c_path);
+        }
+
+        $test_path = sprintf(ROOT.'/tests/TripleI/Command/%sTest.php', $this->c_name);
+        if (file_exists($test_path)) {
+            unlink($test_path);
+        }
     }
 
 
